@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "reviews_list", partial: "reviews/review", locals: { review: @review } %>
+<%= turbo_stream.replace "new_review" do %>
+  <%= render 'reviews/form', reviewable: @movie, review: @movie.reviews.build %>
+<% end %>
+

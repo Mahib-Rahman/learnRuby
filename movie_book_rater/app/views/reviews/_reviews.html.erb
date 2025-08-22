@@ -1,0 +1,17 @@
+<div class="bg-gray-50 p-4 rounded-lg mb-4 border border-gray-200">
+  <div class="flex items-center mb-2">
+    <% review.rating.times do %>
+      <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+      </svg>
+    <% end %>
+    <% (5 - review.rating).times do %>
+       <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+      </svg>
+    <% end %>
+    <span class="ml-2 text-gray-600 font-semibold"><%= review.reviewer_name %></span>
+  </div>
+  <p class="text-gray-800"><%= review.body %></p>
+  <p class="text-sm text-gray-500 mt-2"><%= time_ago_in_words(review.created_at) %> ago</p>
+</div>

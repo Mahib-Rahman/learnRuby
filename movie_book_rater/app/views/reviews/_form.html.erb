@@ -1,0 +1,28 @@
+<%= form_with(model: [reviewable, review], data: { controller: "star-rating" }) do |form| %>
+  
+  <div class="mb-4">
+    <%= form.label :rating, class: "block text-gray-700 font-bold mb-2" %>
+    <div class="flex items-center" data-star-rating-target="starsContainer">
+      <% 5.times do |i| %>
+        <svg class="w-8 h-8 text-gray-400 cursor-pointer" data-action="click->star-rating#rate mouseover->star-rating#highlight mouseout->star-rating#reset" data-rating="<%= i + 1 %>" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+        </svg>
+      <% end %>
+    </div>
+    <%= form.hidden_field :rating, data: { star_rating_target: "ratingInput" } %> 
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :reviewer_name, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :reviewer_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :body, "Review", class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_area :body, rows: 4, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <%= form.submit "Submit Review", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
+  </div>
+<% end %>
