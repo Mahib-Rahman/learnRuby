@@ -14,9 +14,22 @@ module Movies
             end
             end
         end
-    
+
+        def destroy
+            @review = @movie.reviews.find(params[:id])
+            @review.destroy
+
+            respond_to do |format|
+                format.turbo_stream
+                format.html { redirect_to @movie, notice: 'Review was successfully destroyed.' }
+            end
+        end
+        def show
+            @review = @movie.reviews.find(params[:id])
+        end
+
         private
-    
+        
         def set_movie
             @movie = Movie.find(params[:movie_id])
         end

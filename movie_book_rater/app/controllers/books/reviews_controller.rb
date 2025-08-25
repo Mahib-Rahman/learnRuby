@@ -14,7 +14,19 @@ module Books
             end
             end
         end
-    
+        def destroy
+            @review = @book.reviews.find(params[:id])
+            @review.destroy
+
+            respond_to do |format|
+                format.turbo_stream
+                format.html { redirect_to @book, notice: 'Review was successfully destroyed.' }
+            end
+        end
+        def show
+            @review = @book.reviews.find(params[:id])
+        end
+
         private
     
         def set_book

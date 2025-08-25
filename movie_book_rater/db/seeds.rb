@@ -7,6 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Review.delete_all
+Movie.delete_all
+Book.delete_all
+
 Movie.create!([
   { title: "The Shawshank Redemption", director: "Frank Darabont", year: 1994, description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency." },
   { title: "The Godfather", director: "Francis Ford Coppola", year: 1972, description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son." }

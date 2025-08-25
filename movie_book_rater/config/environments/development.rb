@@ -25,8 +25,8 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
   end
 
-  ## adding this for http/https -- didn't work
-  config.action_controller.default_url_options = { protocol: 'https' }
+  ## adding this for http/https -- fixed issue
+  config.action_controller.default_url_options = { protocol: 'http' }
   
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
